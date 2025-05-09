@@ -7,6 +7,7 @@ def handle_requests(client_socket):
             return
         response = parse_request(data)
         client_socket.sendall(response.encode())
+        
     except Exception as e:
         print(f"Error handling request: {e}")
     finally:
