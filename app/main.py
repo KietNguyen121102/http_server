@@ -1,4 +1,5 @@
 import socket
+
 def handle_requests(client_socket):
     try:
         data = client_socket.recv(1024)
@@ -6,10 +7,9 @@ def handle_requests(client_socket):
             return
         response = parse_request(data)
         client_socket.sendall(response.encode())
-    except Exception as e:
-        print(f"Error handling request: {e}")
     finally:
         client_socket.close()
+
 def parse_request(data):
     try:
         request_data = data.decode().split("\r\n")
